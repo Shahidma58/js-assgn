@@ -1,0 +1,36 @@
+class assgn01 {
+  static find_leap_year(yy) {
+    return yy % 4===0 ? `${yy} is a Leap Year.` : `${yy} is not a Leap Year.`;
+  }
+  static calc_fh_temp(celsius) {
+    let fh_temp = ((celsius * 1.8 ) + 32).toFixed(2);
+    return(`${celsius} Celsius are equal to ${fh_temp} degrees Fahrenheit.`)
+  }
+  static calc_cels_temp(fh_temp) {
+    const cels_temp = ((fh_temp -32) /1.8).toFixed(2);
+    return(`${fh_temp} Fahrenheit are equal to ${cels_temp} degrees Celsius.`)
+  }
+// Dear Sirs, I have intentionally written my own logic without recurssion, please
+  static factorial(wNum) {
+    let fact = wNum;
+    for (let x=wNum; x>1; x--) {
+      fact =  fact * (x - 1);
+    }
+    return `The factorial of ${wNum} is ${fact}`;
+  }
+};
+
+
+
+//====================   Leap Year ================
+console.log(assgn01.find_leap_year(2021));
+console.log(assgn01.find_leap_year(2024));
+
+//====================   Calc Temp =================
+console.log(assgn01.calc_fh_temp(61));
+console.log(assgn01.calc_cels_temp(45));
+
+//====================  Calc Factorial ============
+  console.log(assgn01.factorial(6));
+  console.log(assgn01.factorial(3));
+

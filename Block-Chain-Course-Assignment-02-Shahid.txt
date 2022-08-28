@@ -1,0 +1,123 @@
+class assgn02 {
+  static triangle_type(angl_a, angl_b,angl_c) {
+    let trngl_type = "Scalene";
+    if (angl_a+angl_b+angl_c != 180) {
+      return("Err: Sum angles is not equal to 180");
+    }
+    if (angl_a == angl_b &&  angl_a == angl_c ) {
+      trngl_type = "Equilateral";
+    } else if (angl_a === angl_b || angl_a === angl_c || angl_b === angl_c)  {
+      trngl_type = "Isosceles";
+    } 
+    return("Triangle type is " + trngl_type);
+  }
+// ------------------- Diplay Result -----------------
+static  disp_reslt(marks_obtnd) {
+  let grade = "Invalid Marks Parameter";
+//  console.log(marks_obtnd);
+  switch(true) {
+    case marks_obtnd >= 90: 
+      grade = "Excellent- You got S Grade";
+      break;
+    case marks_obtnd >= 80: 
+      grade = "Awsome- you got A Grade";
+      break;
+    case marks_obtnd >= 70: 
+      grade = "Good, you B Grade";
+      break;
+    case marks_obtnd >= 60: 
+      grade = "You got C Grade";
+      break;
+    case marks_obtnd >= 50: 
+      grade = "You managed D Grade";
+      break;
+    case marks_obtnd >= 40: 
+      grade = "You escaped with E Grade";
+      break;
+    case marks_obtnd >= 0: 
+      grade = "Sorry, you have failed";
+      break;
+    default: grade = "Invalid Marks";  
+    }
+    return(grade);
+  }
+// ----------------  Q-3 sum multiples of 3 and 5 ---------  
+  static sum_35_mult() {
+    let wSum = 0;
+    for (let i=3; i<= 1000; i++) {   
+      if (i%3===0) wSum = wSum + i;
+      if (i%5===0) wSum = wSum + i;
+    }
+    return(wSum);
+  }
+//================= Q 4 == Factorial of prime numbers 
+//==========================  in a given range ====
+static calc_fact(num) {
+  let wFact = num;
+  for (let x=num; x>1; x--) {
+    wFact =  wFact * (x - 1);
+  }
+  return wFact
+}
+
+static asgn2_q4(fr_num, to_num) {
+  let wFact = 0;
+  let wPrime = fr_num;
+  let wPrm = false;
+  while (wPrime <= to_num) {
+    wPrm = true;
+    for (let i=2; i < wPrime; i++) {
+      if (wPrime%i==0){
+        wPrm = false;
+        break;
+      }
+    }
+    if (wPrm) {
+      wFact = this.calc_fact(wPrime)
+      console.log(`The factorial of Prime Number ${wPrime} is ${wFact}`);
+    }
+    wPrime += 1;
+  }  
+}
+};
+
+//======================== Q-1 =============
+let angl_a = 70, angl_b = 55, angl_c = 60;
+console.log(assgn02.triangle_type(angl_a, angl_b,angl_c));
+console.log(assgn02.triangle_type(50,50,80));
+console.log(assgn02.triangle_type(55,70,55));
+console.log(assgn02.triangle_type(70,55,55));
+console.log(assgn02.triangle_type(60,60,60));
+console.log(assgn02.triangle_type(50,60,70));
+//==================  Q-2 ======================
+const marks_obtnd=95;
+console.log(assgn02.disp_reslt(marks_obtnd));
+console.log(assgn02.disp_reslt(81));
+console.log(assgn02.disp_reslt(70));
+console.log(assgn02.disp_reslt(69));
+console.log(assgn02.disp_reslt(59));
+console.log(assgn02.disp_reslt(49));
+console.log(assgn02.disp_reslt(40));
+console.log(assgn02.disp_reslt(39));
+console.log(assgn02.disp_reslt(-90));
+//================== Q-3 ===================
+console.log(assgn02.sum_35_mult());
+//================================================
+// For the calculation of prime number I have used simplest logic due to
+// small number to be checked otherwise following checks could also
+// be added to the method to save the number of iterations to check 
+// the prime number and execution time
+// if last digit of the number is 0, or even number or 5 
+// then number is not prime
+// if sum of all the digits of a number is disvisble by 3 
+// number is Not a Prime Number 
+// if square root of any number is integer then also
+// number is not a prime number
+// Take square root of the number and then try sequential division
+// of the number till the divisor is less than the number 
+// and as soon as remainder is found to be zero break because 
+// the given number is not the Prime Number
+//======================================================
+assgn02.asgn2_q4(2, 29);
+//==================  just Test Factorial method =========
+console.log(assgn02.calc_fact(19));

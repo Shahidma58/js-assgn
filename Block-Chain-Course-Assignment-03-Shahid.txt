@@ -1,0 +1,68 @@
+class assgn03{
+  static disp_str(seqsToPrint){
+    let wX =1, wY = 1;
+    let wStr = "";
+    while (wY < seqsToPrint) {
+      wStr = "";  
+      for (let i=0; i < wY; i++) {
+        wStr = wStr + wX.toString() + " ";
+        wX += 1;
+      }
+      wY = wY + 1;
+      console.log(wStr);
+    }
+  }
+// ===================  Armstrong Number  
+  static ArmStrong(asNum)
+  {
+    const asNumStr = asNum.toString();
+    let sum = 0;
+
+    for (let i=1; i <= asNumStr.length; i++) {
+      sum = sum + asNumStr[i-1] ** 3;
+    }
+    if(sum==asNum)
+    {
+      return(asNum.toString() + " is an Armstrong Numebr")
+    }
+    else{
+      return(asNum.toString() + " is NOT an Armstrong Number")
+    }
+  }
+// ============= get factorial of a number called by special number
+  static factorial(digit)
+  {
+    let fact=1;
+    for(let i=2;i<=digit;i++)
+    {
+      fact*=i;
+    }
+    return fact;
+  }
+//===================================  check special number
+  static Speacial_Number(num)
+  {
+    let num_str=num.toString();
+    let sum=0;
+    for(let i=0;i<num_str.length;i++)
+    {
+      sum=sum+assgn03.factorial(num_str[i]);
+    }
+    if(sum==num)
+    {
+      return(num.toString()  + " is a Special Number");
+    }
+    else{
+      return(num.toString() + " is NOT a Special Number");
+    }
+}
+}
+//============================= Q 1 =======
+assgn03.disp_str(5);
+assgn03.disp_str(7);
+//============================= Q 2 =======
+console.log(assgn03.ArmStrong(153));
+console.log(assgn03.ArmStrong(155));
+//============================= Q 3 =======
+console.log(assgn03.Speacial_Number(145));
+console.log(assgn03.Speacial_Number(147));
