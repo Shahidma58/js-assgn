@@ -1,0 +1,6 @@
+// Assign 4
+let sticks = numHuts => (numHuts * 5) +1;
+console.log(sticks(4));
+console.log(sticks(1));
+console.log(sticks(87));
+console.log(sticks(10));
