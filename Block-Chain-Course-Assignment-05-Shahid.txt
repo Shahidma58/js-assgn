@@ -1,0 +1,22 @@
+// assign 5
+class Cylinder_Vol {
+//  constructor() {  }
+  getVol = (wRad,wHeight) => (Math.PI * wRad * wRad * wHeight).toFixed(4);
+}
+
+class Sphere_Vol {
+  getVol = (wRad) => ((4/3) * Math.PI * (wRad ** 3) ).toFixed(4);
+}
+
+class Cone_Vol {
+  getVol = (wRad, wHeight) => (Math.PI * (wRad ** 2) * wHeight /3).toFixed(4);
+}
+
+let CylVol = new Cylinder_Vol();
+console.log(CylVol.getVol(2,4));
+
+let SphVol = new Sphere_Vol();
+console.log(SphVol.getVol(2));
+
+let ConVol = new Cone_Vol();
+console.log(ConVol.getVol(2,3));

@@ -1,0 +1,56 @@
+// assign 6
+
+class Rectangle {
+  constructor(wWidt, wLent=wWidt) {
+      [this.wWidth,this.wLength]=[wWidt, wLent];
+  }
+  calcArea = () => this.wWidth * this.wLength;
+}
+
+class squar extends Rectangle {
+  constructor(wWid) {
+    super(wWid);
+  }
+}
+
+let wrectangle = new Rectangle(4,6);
+console.log(wrectangle.calcArea());
+
+let wsquare = new squar(5);
+console.log(wsquare.calcArea());
+
+// Q-2 ==============   3rd highest value
+const numArr = [3,45,46,46,197,7,23,5,7,28,109,0,47];    
+numSort = numArr.sort(function(v1, v2){return v1 - v2});
+console.log(numSort);
+let newArr = [...new Set(numSort)];     // remove duplicate values from array
+console.log(newArr);
+console.log(newArr.slice(-3,-2));
+
+//==============  through functional code =====================
+const arr = [3,45,6,7,23,5,7,8];
+//const arr = [3,45,46,46,197,7,23,5,7,28,109,0,47];    
+
+let [fst, sec, thrd] = [0, 0, 0];
+const findThirdMax = (arr) => {
+   for (let el of arr) {
+      if (el > fst) [fst, sec, thrd] = [el, fst, sec];
+      if (el < fst && el > sec) [sec, thrd] = [el, sec];
+      if (el < sec && el > thrd)  thrd = el;
+//      console.log(fst +" " + sec + " " + thrd + " " + el );
+   }
+};
+findThirdMax(arr);
+console.log(thrd);
+// Q-3 ==========================
+
+wStr = "025468";
+res ="";
+for (let i = 0; i < wStr.length; i++) {
+   if (parseInt(wStr[i])===0 || (wStr[i]%2===0 && wStr[i+1]%2===0)) {
+      wStr = wStr.slice(0,i+1) + "-" + wStr.slice(i+1);
+      i++;
+   }
+}
+console.log(wStr);
+
