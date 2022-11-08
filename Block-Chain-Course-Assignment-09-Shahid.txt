@@ -1,0 +1,47 @@
+Assignment -9
+
+// Q-1
+
+Yes, inner functions is a Closure because it is accessing the variable defined outside of it. The code is written in a way that the function is returned with a separate 'return' statement.
+
+It prints 100
+
+In fact hoisting is the one of the very important feature of ES6 that enables the definition of variables anywhere in the script to facilitates the usage.
+
+
+SCOPE of a variable:
+====================
+A variable’s scope is the depth in the code where it can be accessed.
+
+Closure is accessing the variables/objects just defined outside may be just one level up.
+
+
+JavaScript uses lexical scoping to resolve the variable names when a function is created inside another function. It determines the function's parent scope by searching at where the function was created.
+
+Hope following example explains  the lexical and scope of a variable
+
+let outerVariable = 99;
+function OuterFunction()
+  { outerVariable = 100;
+    return function InnerFunction() {
+    console.log(outerVariable);
+  }
+}
+console.log(outerVariable);
+var innerFunc = OuterFunction();
+innerFunc();
+console.log(outerVariable);
+outerVariable = 98;
+innerFunc();
+
+
+// Q-3 ===========
+
+A variable to be used in a closure function must be defined some higher level above that usage
+
+// Q-4
+
+It prints 3,3,3
+
+it executes in a async manner so the by the time timeout is over it is already=  3
+
