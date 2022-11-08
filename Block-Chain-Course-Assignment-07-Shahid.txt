@@ -1,0 +1,101 @@
+// Gets user input   Q 1,2, 3   -------  String name is S1 instead of S
+let x=0;
+var S1 = prompt("Please input a word?");
+x=S1.length;
+println(x);
+if (S1.length > 4) {
+    println(S1.substring(0,4));
+} else {
+    println(S1);
+}
+
+const res = S1.replaceAll(" ","")
+    println(res);
+
+console.log(S1.split(' ').reverse().join(' '));
+
+// Q-4 ----------------------------------    
+const res1 = S.replaceAll("A","X")
+    println(res1);    
+// Q-5  split converts to string to array
+const arr = S.split(" ");
+println(arr);
+
+let text = "I want to Banglore"
+let position = text.search(/blue/);
+console.log(position);
+// Q-6 -----------------------------
+
+let strr = "I want to see Delhi, delhi is capital of India, Delhi is a cosmo"
+let pos = strr.search(/delhi);
+let pos = strr.search(/Delhi/);
+let pos = strr.search(/delhi/i);
+println( pos);
+
+// regext can also be used for searching the string
+
+// Q-7   Some times it doesn't work but many times work both in browser and node
+
+let strr = "Capital-City \\N Delhi";
+//let newstr = strr.replaceAll(" ", "\\n");
+console.log(strr)
+
+let str = "Hello World!\nThis is my string";
+console.log(str);
+
+// Q-8
+
+var character = 'qAbcd';
+
+if (character[0] == character[0].toUpperCase()) {
+ alert ('upper case true');
+}
+if (character[0] == character[0].toLowerCase()){
+ alert ('lower case true');
+}
+
+
+//Q-9
+// Gets user input
+let resp = prompt("Pl input your response ?");
+
+if (resp.toUpperCase() === "YES") {    
+    console.log("You are right");
+} 
+
+// Q-10
+
+const stra="shahid is learning blockchain and frontend";
+println(stra.toUpperCase());
+
+let strc = stra[0].toUpperCase() + stra.substr(1,99);
+println(strc);
+
+const strb="BANGALURU IS SILICON VALLEY OF INDIA";
+println(strb.toLowerCase());
+
+// Reverse the string 
+
+let straa = "shahid";
+let strb1 = straa.split("").reverse();
+console.log(strb1.toString().replaceAll(",",""));
+
+
+let strd1 = "T20-World Cup Final-Match of";
+println(strd1.slice(strd1.length/2,99) +" "+strd1.slice(0,strd1.length/2));
+
+let strdd = "t-20 world cup is in full swing";
+println(strdd.slice(strdd.length/2,99) +" "+strdd.slice(0,strdd.length/2));
+
+let myText ="T20 world cup is in prgress in australia";
+//let myText ="australia";
+//myText = myText.split("")
+let uniqVal = new Set(myText)
+//println(uniqVal);
+uniqVal.forEach(wChr => {
+//  console.log(wChr); // 👉️ one, two, three, four
+    const numOccur = myText.match(RegExp(wChr, "g")).length
+  println("count of " + wChr + " is " + numOccur);
+});
+//reversing a string - in solidity we will have to check alternates also to save the gas
+console.log(straa.split('').reverse().join(''));
