@@ -1,0 +1,30 @@
+ 
+// Q-1 Set object doesn't allow duplicate values in it
+
+let newSet = new Set([2,3,2,1,4,5,5]);  // note dup value
+//println(newSet);
+console.log(newSet);
+
+let secSet = new Set();
+while (secSet.size < 4) {
+    secSet.add(Math.floor(Math.random() * 11));
+}
+//println(secSet);
+//println(secSet.has(8));
+console.log(secSet);
+console.log(secSet.has(8));
+// execute 2 to 4 times it will have 8
+
+console.log(newSet);
+newSet.delete(4);
+newSet.add(7); 
+newSet.add(3);   // will not be added but silently ignored
+newSet.add(9); 
+
+//println(secSet);
+console.log(newSet);
+
+
+
+
+
