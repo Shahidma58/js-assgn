@@ -1,0 +1,30 @@
+Assigment-10
+
+1:=
+
+A callback is a function is passed as an argument to another function and its execution time is determined by that function.
+
+Callback and high order functions are not same. A high order function takes another function as an argument or returns the function as a result or both. 
+
+A callback function is a function to be passed as arguments for the execution when required.
+
+2:-
+
+Yes, filter is a highorder function because it needs a function as argument having logic to select the desired values. e.g. 
+
+const data = [10, 11, 23, 45, 67, 8, 90, 42];
+
+const result = data.filter(function(num){
+    return (num % 2 === 0);
+}); 
+
+The function used to filter the values is passed as an argument to filter func.
+
+3:= Reduce is another high order function because it accepts the another function which manipulates the parameters passed by the reduce function.
+
+
+4:=
+
+useFUnction is a highorder function because it accepts the argFn as parameters and calls it back to display the name rerieved from "names" array.
+
+This program will display all the four names joining the string Hello.
