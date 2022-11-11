@@ -1,0 +1,57 @@
+// ASSGN-15
+// Q-1
+function nextEdge (side1, side2) {
+  if (side1 < 1 || side2 < 1) {
+//   console.log("Length of side may not be less than 1");
+    return("Length of side may not be less than 1");
+  }
+  return side1 + side2 -1;
+}
+
+console.log(nextEdge(-8,10));
+console.log(nextEdge(8,10));
+console.log(nextEdge(5,7));
+console.log(nextEdge(9,2));
+// Q-2 =======================================
+
+Could not do
+
+// Q-3 =======================================
+
+Not able to do, I am weak in maths, will try later
+
+// Q-4
+function getSum(wNum,numDots) {
+  let sum1 = 0;
+  for (let i=0; i<wNum; i++) {
+    sum1 = sum1 + numDots[i];
+  }
+  return sum1;
+}
+let numDots = [1,3,6,10,15,21,28];
+console.log(getSum(2,numDots));
+console.log(getSum(4,numDots));
+console.log(getSum(3,numDots));
+console.log(getSum(6,numDots));
+
+// Q-5 ============================
+
+const changeEnough = (chang, amt) => {
+  let qrtr = chang[0] * 0.25;
+  let dim = chang[1] * 0.1;
+  let nkl = chang[2] * 0.05;
+  let peny = chang[3] * 0.01;
+  console.log(qrtr + dim + nkl + peny);
+  if ((qrtr + dim + nkl + peny) >= amt) {
+//    console.log(qrtr + dim + nkl + peny);
+    return true;
+  } else 
+  return false;
+};
+
+console.log(changeEnough([22, 100, 0, 0], 14.11));
+console.log(changeEnough([6, 50, 0, 0], 14.11));
+console.log(changeEnough([0, 0, 20, 5], 0.75));
+console.log(changeEnough([30, 40, 20, 5], 12.55));
+console.log(changeEnough([1, 0, 5, 21], 19.99));  // flase
+console.log(changeEnough([10, 15, 5, 21], 3.99));
