@@ -1,0 +1,57 @@
+Assigment-21
+
+Q-1
+======================================================================
+Async/Await 
+
+It make the user interface more responsive and robust by not waiting for the time taking tasks
+
+It minimizes the hangup type of situations by avoiding the wait for the completion of task and proceeds for next tasks and handles the repsonse of awaited tasks when these are completed.
+
+I/O and database dependent tasks are queued up and save the processing power and hardware resources
+
+It helps in scalability when we have powerful servers capable of executing the mutiple processes/threads so we can multiple requests to servers at once and get response as soon as these are completed.
+
+Q-2
+====================================================================
+Yes async requests can be chained. It is sequenced in a manner that when first promisr returns succes then another aysnc request is made. Q-1 of assgn-19 is the example of promise chaining if reolve() is also made part of callback.
+
+Q-3
+====================================================================
+Aync/Await real word example
+===============================================================================
+Following is a code I am trying as react-js project to create a very basic 
+membership site. It has select one record to display and then delete record. it is working.
+=============================================================================
+
+//==================== Members Sel One ======================
+router.get("/api/MembSelOne/:Mem_Id", (req, res, next) => {
+  //console.log(req.params);
+  const Mem_Id = req.params.Mem_Id;
+  var params = []
+  var sql = `select Mem_ID, Mem_Name,Mem_Level, Mem_Mbl from aqim.Members where Mem_ID ="${Mem_Id}"` ;
+  MyConn.query(sql, params, (err, rows, fields) => {
+  //console.log(rows[0]);
+//----------------------------
+if (err) {
+// change status check to 200 else all erors  =======================
+    res.status(400).json({"error":err.message});
+    return;
+  }
+  var dt1 = rows[0];
+  res.json(dt1);
+});
+});
+//====================  Delete Member =======================
+router.delete("/api/MembDel", (req, res, next) => {
+  console.log("delete ===============");
+  console.log(req.body);
+  const wVars = Object.values(req.body);
+  const wSql = "Delete from aqim.Members Where Mem_ID = '" + wVars +"'";
+  console.log(wSql);
+  MyConn.query(wSql,[wVars], (err, data) => {        
+  if (err) return res.status(400).json({"error": res.message})
+  res.json('Record Deleted successfully....');
+  });
+});
+

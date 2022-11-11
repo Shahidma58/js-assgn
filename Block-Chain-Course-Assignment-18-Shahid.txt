@@ -1,0 +1,115 @@
+//=================================
+Assgnment -18  Generators
+//==================================
+// Q-1  -----------------
+A simple function is a 
+
+set of instructions to perform some task
+can be re-used
+executed completely when called
+
+Generator Function
+
+Is a function with special syntax 
+Can be executed in steps on demand
+
+used for generating the values or doing some task one step at time
+it stays in the memory and remembers it's last execution
+on next call its execution is resumed from next point
+it returns two values, value and execution status completed/incomplete 
+
+
+function* seqGen() {}
+or function *seqGen() {}
+
+// Q-3
+
+Yes, Generators are iterables
+
+
+// Q-4 =================
+
+function* seqGen(x , y) {
+  // yield 10;
+  // yield 50;
+  // yield 100;
+
+  let res = x * y;
+  yield res;
+  res = w1 + z1;
+  yield res;
+  yield true;
+
+
+}
+
+let x = 2;
+let y = 2;
+let w1 = 3;
+let z1 = 3;
+let nxtVal1 = seqGen(x,y,w1,z1);
+console.log(nxtVal1.next().value);
+//nxtVal = seqGen();
+console.log(nxtVal1.next().value);
+//nxtVal = seqGen(w1,z1);
+//console.log(nxtVal1.next(w1,z1));
+
+console.log(nxtVal1.next().value);
+
+console.log(nxtVal1.next());
+
+
+
+// Q-5
+
+
+function* numGen(x , y) {
+  try {
+    let i = 0;
+    while (i < 10)  {   // this can be converted to infinite number
+      i++;
+      yield i
+    }
+  } catch (e) {
+    console.log("end .........")
+  } 
+}
+
+  let nxtVal = numGen();
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next().value);
+  console.log(nxtVal.next());
+
+let i=0;
+//while(true) { ---------inifinite loop
+while(i < 12) {
+    console.log(nxtVal.next().value);
+    i++;
+}
+
+// Q-6
+
+async function* generator() {
+  yield new Promise((resolve, reject) => {
+      reject("Error thrown from an async "
+          + "generator function....!!!");
+  });
+}
+
+let iterator = generator();
+
+iterator
+  .next()
+  .then((result) => console.log(result.value))
+  .catch((error) => console.log(error));
+
+  

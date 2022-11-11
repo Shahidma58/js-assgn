@@ -1,0 +1,58 @@
+//Q-1
+let emps  = ["John","Rohn", "Danny", "James"]
+for (emp of emps) {
+  console.log(emp);
+}
+// Q-2: =================
+for (emp of "iNeuron") {
+  console.log(emp);
+}
+
+// Q-3: =================
+function myNumbers() {
+  let n = 0;
+  return {
+    next: function() {
+      n += 10;
+      return {value:n, done:false};
+    }
+  };
+}
+const nv = myNumbers();
+console.log(nv.next());
+console.log(nv.next());
+
+// Q-4
+arr1 = ["a", "b", "c", "d","e"]
+arr2 = ["e", "f", "g", "h", "a", "i", "j"]
+
+for (val1 of arr1) {
+  for (val2 of arr2) {
+    if (val2 === val1) {
+      console.log("matched value is " + val2);
+    }
+  }
+}
+
+// Q-5 ===========
+// for each, map, for of (for of is already done on top)
+// const numbers = [45, 4, 9, 16, 25];
+// let txt = "";
+// numbers.forEach(myFunction);
+// function myFunction(value, index) {
+//   console.log("Item " + value);
+//   console.log("Index " + index);
+// }
+
+// const nums = [3, 4, 5, 6];
+// const newArr = nums.map(myFunc)
+
+// function myFunc(num) {
+//   return num ** 3;
+// }
+
+//console.log(newArr);
+
+// const num1 = [16, 25, 36, 49];
+// const newAry = num1.map(Math.sqrt);
+// console.log(newAry);

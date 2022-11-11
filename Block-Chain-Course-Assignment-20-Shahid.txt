@@ -1,0 +1,192 @@
+Assigment-20 Shahid
+
+Q-1
+======================================================================
+Async/Await 
+
+It make the user interface more responsive and robust by not waiting for the time taking tasks
+
+It minimizes the hangup type of situations by avoiding the wait for the completion of task and proceeds for next tasks and handles the repsonse of awaited tasks when these are completed.
+
+Tasks, like I/O and database dependent tasks are queued up and and let the other smaller tasks finish asap
+
+It helps in scalability when we have powerful servers capable of executing the mutiple processes/threads so we can send multiple requests to servers at once and get response as soon as these are completed.
+
+Q-2
+====================================================================
+Yes async requests can be chained. It is sequenced in a manner that when first promise returns success then another aysnc request is made. Q-1 of assgn-19 is the example of promise chaining if reolve() is also made part of callback.
+
+prmoise.then....
+catch((err)    is also promise chaining (just like method chaining)
+
+Q-3
+====================================================================
+Aync/Await real word example
+===============================================================================
+Following is a code I am trying as react-js project to create a very basic 
+membership site. It has 'select one record' to display and then delete record. it is working.
+=============================================================================
+
+//==================== Members Sel One ======================
+router.get("/api/MembSelOne/:Mem_Id", (req, res, next) => {
+  //console.log(req.params);
+  const Mem_Id = req.params.Mem_Id;
+  var params = []
+  var sql = `select Mem_ID, Mem_Name,Mem_Level, Mem_Mbl from aqim.Members where Mem_ID ="${Mem_Id}"` ;
+  MyConn.query(sql, params, (err, rows, fields) => {
+  //console.log(rows[0]);
+//----------------------------
+if (err) {
+// change status check to 200 else all erors  =======================
+    res.status(400).json({"error":err.message});
+    return;
+  }
+  var dt1 = rows[0];
+  res.json(dt1);
+});
+});
+//====================  Delete Member =======================
+router.delete("/api/MembDel", (req, res, next) => {
+  console.log("delete ===============");
+  console.log(req.body);
+  const wVars = Object.values(req.body);
+  const wSql = "Delete from aqim.Members Where Mem_ID = '" + wVars +"'";
+  console.log(wSql);
+  MyConn.query(wSql,[wVars], (err, data) => {        
+  if (err) return res.status(400).json({"error": res.message})
+  res.json('Record Deleted successfully....');
+  });
+});
+
+in common life getting ready for office in the morning many tasks are to be sequenced e.g.
+get shower, do breakfast, change clothes, check the office bag, 
+
+At restaurant, serving the customer, Waiters take the order inform the kitchen, customer are responded as sson as the order is received, 
+
+Food panda books the orders and then deliver as per respose from the kitchen
+
+At tailor shop orders are taken but delivered as per size & type of the order and size of the queue
+===============================================================================
+Q-4
+===============================================================================
+The output is 3
+
+[Running] node "d:\JS\js01\assgn20q4.js"
+-------------
+2
+aaaaaaaaaaaaaaaaaaaaaa
+2
+increment--------
+3
+3
+-----------------------------------------------
+async function inc(x) {
+  x = x + await 1
+  console.log('-------------');
+  console.log(x);
+  return x;
+}
+async function increment(x){
+  x = x + 1
+  console.log('increment--------');
+  console.log(x);
+  return x
+}
+inc(1).then(function(x){
+  console.log('aaaaaaaaaaaaaaaaaaaaaa');
+  console.log(x);
+  increment(x).then(function(x){
+    console.log(x)
+  })
+})
+========================================================================
+Q-5
+===================================================================
+Same as q-1 of assigment 19
+
+Success is not check so only error is generated
+
+the output is
+---------------------------
+1
+Error: some error
+    at d:\JS\js01\assgn20q5.js:2:10
+    at new Promise (<anonymous>)
+--------------------------------------------------
+Q-6
+
+output is
+
+3
+2
+1
+Go!
+
+but one thing is strange why node/javacript allow duplicate functions definitions when javascript doesn't support overloading. It looks the due hoisting feature javascript registers only later declaration and ignore the first one. So, only second declation will be called.
+
+2nd point is async is not effective in these cases because console.log does not return promise
+
+Hope I am clear and right
+
+================================================================================
+Q-7
+==============================================================================
+Simple
+
+output is 15
+
+sum of all executions returns the 2nd parameter as a result so
+1 + 2 + 3 + 4 + 5 = 15
+==============================================================================
+Q-8
+=============================================================================
+Yes it is possible to nest the async functions ---- but I think chaining the promise is better solution
+
+// my-component.jsx  ----             from PLURALSIGHT ------- 
+
+// We have to get chips after we get fish...
+getFishAndChips = () => {
+    fetch(this.fishApiUrl) // Request fish
+        .then(fishRes => {
+            fishRes.json().then(fish => {
+                this.fish = fish;
+
+                const fishIds = fish.map(fish => fish.id);
+
+                fetch( // Request chips using fish ids
+                        this.chipsApiUrl,
+                        {
+                            method: 'POST',
+                            body: JSON.stringify({ fishIds })
+                        }
+                    )
+                    .then(chipsRes => {
+                        chipsRes.json().then(chips => {
+                            this.chips = chips;
+                        })
+                    })
+            })
+        })
+}
+
+====================================================
+Q-9 Avoid deadlock while using async/await
+=====================================================
+1: Don't mix the async and sync code in one function. Functions returning promise shall be having 	only async code
+2: Try to execute faster functions first and then time taking ones
+
+=======================================================
+Q-10
+===========================================================
+Scenarios to use synchronus code
+
+Generating the roll no or membership ID's
+printing the documents
+Scheduling the meetings and making reservations
+messages need immediate response
+connecting the support calls to agents
+in online banking same kind of service requests are to be queued
+food-points taking the orders for the same dish 
+In general, when tasks are dependent on outcome of previous task
+
+

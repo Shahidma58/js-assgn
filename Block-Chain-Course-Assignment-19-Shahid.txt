@@ -1,0 +1,101 @@
+Assigment-19 Shahid
+
+Q-1 output
+==========================================================
+Because the success is not checked so the output is 
+
+Error 1
+Success 4
+
+but if we add resolves() also
+
+function job() {
+  return new Promise(function(resolve, reject) {
+  resolve();
+  reject();
+  });
+}
+
+then output will be 
+
+Success 1
+Success 2
+Success 3
+Success 4
+//==================================================================
+// Q-2
+// ==================================================================
+
+const fnSleep = (delay, resVal) => new Promise((resolve) => {
+//  console.log('aaaaaaaaaa');
+  setTimeout(()  => resolve(resVal), delay);
+  console.log(resVal);
+});
+
+fnSleep(1000,'aaaaaaaaa');
+fnSleep(1000);
+//============================================
+//  Q-3
+//========================================
+2
+4
+undefined ============ not able to understand why undefined but mult is executed
+8
+
+//===============================================
+// Q-4
+//=============================================
+start
+middle
+1
+end
+success
+
+all sync code including function is executed first and promise is returned last. 
+Promise Priority???
+//================================================================================
+// Q-5
+//==============================================
+const delay = () => new Promise((resolve) => {
+  //  console.log('aaaaaaaaaa');
+    setTimeout(()  => resolve(
+      console.log('called.....')
+    ), 1000);
+});
+  
+delay();
+
+//======================================================
+// Q-6
+//=============================================================
+
+SUCCESS!
+
+//======================================================
+// Q-7
+//=============================================================
+
+Not able to explain
+
+
+//======================================================
+// Q-8
+//=============================================================
+
+strat		sync
+end		sync
+resolve		promise has priority
+setTimeout	
+
+//======================================================
+// Q-9   MISSING 
+//=============================================================
+
+//======================================================
+// Q-10
+//=============================================================
+
+start
+end
+1
+2
