@@ -1,0 +1,130 @@
+// assignment 11 shahid
+
+// Q-1-a
+//const nums = [2, 11, 3, 4, 5, 6, 7, 9, 8];
+const nums = [1,2,3,4,5];
+// odd-p 2+3+5+7+8 = 25
+// even-p 11+4+6+9 = 30
+//const nums = [3,4, 6,2];
+const [odds, evens] = nums.reduce(
+  ([odds, evens], cur,curIdx) => 
+    curIdx % 2 === 0 ? [odds + cur, evens] : [odds, evens + cur],
+//  curIdx % 2 === 0 ? [odds + 1, evens] : [odds, evens + 1],
+  [0, 0]
+);
+
+console.log('sum of odd places: ' + odds);
+console.log('sum of even places: ' + evens)
+console.log(odds - evens);
+//===  Q-1-b  c ===========================================
+const [oddsp, evensp] = nums.reduce(
+  ([oddsp, evensp], cur,curIdx) => 
+//    curIdx % 2 === 0 ? [odds + cur, evens] : [odds, evens + cur],
+    curIdx % 2 === 0 ? [oddsp + 1, evensp] : [oddsp, evensp + 1],
+  [0, 0]
+);
+
+console.log('odd place elements: ' + oddsp);
+console.log('even place elements: ' + evensp)
+// ===============  Q-1 d == calc Average ================
+const numsavg = [1,2,3,4,5];
+const calcAvg = (nums) => {
+  return numsavg.reduce((sum, curval) => (sum + curval)) / nums.length;
+};
+console.log(calcAvg(numsavg));
+// ===============  Q-1 eee GCD ==================
+//Source:https://bit.ly/3hEZdCl (github)
+const gcd = (...nums2) => {
+  const _gcd = (x, y) => (!y ? x : gcd(y, x % y));
+  return [...nums2].reduce((a, b) => _gcd(a, b));
+};
+console.log(gcd(...[12, 18,15]));
+console.log(gcd(...[12, 8, 32]));
+const nums2 = [12,18,24,36]
+console.log(gcd(...nums2));
+// ================  Q-2 =============
+const arr1 = [ 1, 2, 3, 4, 5 ];
+const arr2 = [ 4, 6, 1, 8, 2 ];
+// const chkarr1 = arr1.includes(6)
+// console.log(chkarr1);
+numb = 7;
+if (arr1.includes(numb) &&  arr2.includes(numb)) {
+  console.log(`${numb} in both arrays`);
+} else if (arr1.includes(numb)) {
+  console.log(`${numb} in array-1`);
+} else if (arr2.includes(numb)) {
+  console.log(`${numb} in array-2`); 
+}else {
+  console.log(`${numb} not found in any array`); 
+}
+
+//===========  Q-3 =========================
+const arr3 = [ 1, 2, [ 3, 4, [ 5 ] ] ];
+// sol-2
+const arr3 = [ 1, 2, [ 3, 4, [ 5 ] ] ];
+const flatten = (arr) => 
+  arr.reduce((flat, next) => 
+    flat.concat(Array.isArray(next) 
+    ? flatten(next) : next), []);
+//========================
+// sol-3
+//console.log(flatten(arr3));
+let fltArr = [].concat(...arr3);
+let fltArr1 = [].concat(...fltArr);
+console.log(fltArr1);
+
+//could not find the dimensions of the array
+//==============================================
+soln-4 but an issue
+const merged = [].concat.apply([], arr3);
+console.log(merged)
+// this solution is working on tutorials point 
+// but not else where
+
+// soln 1
+const flatarr = arr3.flat(Infinity);
+console.log(arr3.flat(1));
+console.log(arr3.flat(2));
+//console.log(arr3.flat(3));
+console.log(flatarr);
+
+
+//===========  Q-4 =========================
+arr = [ 1, 2, 3, 2, 3, 4, 5 ];
+arru = [];
+arrdup = [];
+arr.forEach(separr);
+function separr(value) {
+ arru.includes(value) ? arrdup.push(value) : arru.push(value);
+}
+console.log(arru);
+console.log(arrdup);
+//===========  Q-5 =========================
+function thirdLargest(arr, arr_size)
+{
+  if (arr_size < 3){
+    console.log('invalid arr');
+    return;
+  }
+  let first = arr[0];    
+  for (let i = 0; i < arr_size ; i++) {
+//    console.log(arr[i]);
+    if (arr[i] > first) first = arr[i];
+  }
+  console.log('first val : ' + first);
+  let second = Number.MIN_VALUE; 
+  for (let i = 0; i < arr_size ; i++) {
+    if (arr[i] > second && arr[i] < first) second = arr[i];
+  }
+  console.log('sec val : ' + second)
+  let third = Number.MIN_VALUE; 
+  for (let i = 0; i < arr_size ; i++) {
+    if (arr[i] < second && arr[i] > third) third = arr[i];
+  }
+  console.log("The third Largest " + "element is ", third);
+}
+
+let arr = [12, 13, 1, 10, 34, 16]; 
+let n = arr.length;
+thirdLargest(arr, n)
+
