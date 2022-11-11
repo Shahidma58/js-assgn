@@ -1,0 +1,72 @@
+
+let employees = [
+  {
+  "id": 1,
+  "name":"Abhinav",
+  "department":"IT",
+  "Salary":75000
+  },
+  {
+  "id": 2,
+  "name":"Gaurav",
+  "department":"Sales",
+  "Salary":52000
+  },
+  {
+  "id": 3,
+  "name":"Raj",
+  "department":"IT",
+  "Salary":64000
+  }]
+//========================================
+let hospitals = [
+  {
+  "id": 1,
+  "name":"Hospital A",
+  "location":"Delhi",
+  "noOfBeds":450,
+  "availability":"Yes"
+  },
+  {
+  "id": 2,
+  "name":"Hospital B",
+  "location":"Pune",
+  "noOfBeds":150,
+  "availability":"No"
+  },
+  {
+  "id": 3,
+  "name":"Hospital C",
+  "location":"Pune",
+  "noOfBeds":350,
+  "availability":"Yes"
+  },
+]
+//===============================================
+  var newEmps = employees.filter (function (atr){
+    return atr.department  =="IT";
+  })
+//  console.log(newEmps);
+
+let selHosp = hospitals.filter (function (atr){
+  return atr.noOfBeds >= 200 && atr.availability == "Yes" && atr.location =="Pune";
+})
+//console.log(selHosp);
+
+let selHosp1 = hospitals.filter (function (atr){
+  return atr.noOfBeds > 200;
+})
+
+//console.log(selHosp1);
+
+let selHosp2 = hospitals.filter (function (atr){
+  return atr.availability == "Yes";
+})
+
+//console.log(selHosp2);
+
+let selHosp3 = hospitals.filter (function (atr){
+  return atr.location == "Pune";
+})
+
+console.log(selHosp3);
