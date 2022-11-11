@@ -1,0 +1,78 @@
+//  Assgn  13
+// Q-1
+const nums1 = [1,2,3,4,5];
+const wSum = function average(nums) {
+  return nums.reduce((a, b) => (a + b));
+}
+console.log(wSum(nums1));
+
+const avg = function average(nums) {
+  return nums.reduce((a, b) => (a + b)) / nums.length;
+}
+console.log(avg(nums1));
+//=================  Q-2-A ==================
+
+function getGrade(mrks) {
+  let grd = "";
+  switch (true) { 
+    case (mrks>=90): 
+      grd = "A";
+      break;
+    case (mrks>=80): 
+      grd = "B";
+      break;
+    case (mrks>=70): 
+      grd = "C";
+      break;
+    case (mrks>=60): 
+      grd = "D";
+      break;
+    case (mrks>=50): 
+      grd = "E";
+      break;
+    default:
+      grd="F"
+  }
+  return grd;
+}
+const res = getGrade(61);
+//console.log(res);
+
+let students = [
+  { name: "John", marks: "92" },
+  { name: "Oliver", marks: "85" },
+  { name: "Michael", marks: "79" },
+  { name: "Dwight", marks: "95"},
+  { name: "Oscar", marks: "64" },
+  { name: "Kevin", marks: "48" },
+  ];
+  
+const res1 = students.map(o => {
+    return {
+//    name: o.name, marks: o.marks,grade: getGrade(o.marks)
+      grade: getGrade(o.marks), name: o.name
+    }
+})
+
+console.log(res1);
+//
+
+//==   Q-2 b ==============================================        Sort array of objects
+let grades = [
+  { grade: 'A', name: 'John' },
+  { grade: 'B', name: 'Oliver' },
+  { grade: 'C', name: 'Michael' },
+  { grade: 'A', name: 'Dwight' },
+  { grade: 'D', name: 'Oscar' },
+  { grade: 'F', name: 'Kevin' }
+];
+
+let NewArr = grades.sort((a,b)=> {
+ var a1 = a.grade;
+ var b1 = b.grade;
+ return a1<b1 ?-1:a1> b1? 1 :0;
+})
+
+console.log(NewArr);
+
+//===================== could not do Group by 
