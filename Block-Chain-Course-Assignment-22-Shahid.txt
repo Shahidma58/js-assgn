@@ -1,0 +1,44 @@
+//  ========= Solidity Assigment-22 (Nov-13)
+
+// some more checks and logic could also be added e.g. if value entered by user is more than 
+// length of the array or exactly equal to length of array. presently it will ignore this value
+// current solution works if the value (n) entered is less than array length then it will the remove
+// the n-th value
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity 0.8.6;
+contract arraydemo {
+    uint[] public nums = [5,6,7];
+    uint[4] public fixNums = [5,6,7];
+
+    function getValues() public view returns(uint[] memory) {
+      return nums;      
+    }
+    function getValues1() public view returns(uint[4] memory) {
+      return fixNums;      
+    }
+  
+    function getArrLen() public view returns (uint) {
+        return nums.length;
+    }
+
+  function addElement(uint num) public {
+    nums.push(num);
+  }
+  function remElement() public {
+    nums.pop();
+  }
+  function delElement(uint idx) public {
+    delete nums[idx]; 
+  }
+  function removeElement(uint idx) public {
+    //delete nums[idx];
+    if (idx < nums.length) {
+      for (uint256 i = idx; i < nums.length; i++) {
+        nums[i-1] = nums[i];
+      } 
+      nums.pop();
+    }
+  }
+
+}
